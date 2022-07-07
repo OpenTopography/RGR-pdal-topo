@@ -10,7 +10,8 @@
 
 ## File List:
 - Dockerfile -- builds a miniconda container for developing in VSCode
-- Dockerfile.mini.rgr -- builds miniconda container with local jupyter notebook server; notebook launches when container is built 
+- Dockerfile.mini.rgr -- builds miniconda container with local jupyter notebook server; notebook launches when container is built
+- devcontainer -- config files for VSCode Remote Container
 - src -- folder containing DEM creation & Analysis Modules, tutorial jupyter_notebooks, test scripts, and testData
 - .travis.yml, docker-compose.image.yml, docker-compose.yml -- configuration files for Docker.mini.rgr
 - data -- folder destination for Dockerfile 'VOLUME'
