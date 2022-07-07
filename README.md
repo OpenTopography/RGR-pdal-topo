@@ -1,5 +1,6 @@
 ## Containerized Development Environment for the RGR NSF-INTERN Project
--
+- request pointclouds from 3DEP to create grids
+- compute metrics on DEMs
 - Setup is tested for Windows running Docker & VSCode-Remote Containers
 - two possible containers: 1) Dev Container in VSCode; 2) Local Jupyter Notebook Server
 
