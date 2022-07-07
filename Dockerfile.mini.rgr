@@ -1,0 +1,20 @@
+FROM continuumio/miniconda3
+
+LABEL maintainer="Keid"
+
+RUN conda update conda \
+  && conda update --all \
+  #add conda forge & default channels
+  && conda config --add channels conda-forge \
+  && conda config --add channels default \
+  # install libraries
+  && conda install jupyter matplotlib numpy numexpr gdal scipy shapely pyproj\
+  #pdal needs super special install, otherwise won't work
+  && conda install -c conda-forge python-pdal\
+  && conda clean --all
+
+VOLUME /src
+
+EXPOSE 8888
+# launches local jupyter notebook at start of container
+CMD jupyter notebook --notebook-dir=/src --ip=0.0.0.0 --port=8888 --no-browser --allow-root

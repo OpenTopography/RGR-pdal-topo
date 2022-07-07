@@ -1,0 +1,5 @@
+setup.py
+demAnalysisComponents.egg-info/PKG-INFO
+demAnalysisComponents.egg-info/SOURCES.txt
+demAnalysisComponents.egg-info/dependency_links.txt
+demAnalysisComponents.egg-info/top_level.txt
