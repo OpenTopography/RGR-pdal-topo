@@ -17,7 +17,7 @@
 
 ## Getting started:
 - Clone this repo
-# For VSCode Container setup (recommended):
+## For VSCode Container setup (recommended):
 - Launch Docker Desktop & VSCode
 - In VSCode, install extensions (listed above)
 - Navigate to repo folder
@@ -25,7 +25,7 @@
 - Once container is launched, add installed VSCode extensions to the Dev container
 - Change Python Interpreter to 'Python 3.9.13 ('base':conda) /opt/conda/bin/python'
 
-# For Jupyter Notebook container setup:
+## For Jupyter Notebook container setup:
 - Run `docker-compose up --build` in terminal
 - copy and paste last url into browser to launch local jupyter notebook
 - Note: when re-launching container after exiting, you may need to enter the token for access (located in the launch url)
