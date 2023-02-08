@@ -113,10 +113,11 @@ class baseGrid:
         self._filePath = filePath
         self._gdalDriver = src.GetDriver().ShortName
         self._gdalDataType = src.GetRasterBand(1).DataType
-
+        
         # Close the original source
         src = None
-
+  
+    
     def overwriteSaveFile(self):
         '''
         Overwrites the save file from which this grid was loaded (or previously saved) with the current data in the grid.
@@ -597,7 +598,16 @@ class baseGrid:
         '''
 
         return np.nanmax(self.grid)
-
+    
+    def ndv(self, filepath:str): # added by MS 12/7/22
+        src = gdal.Open(filepath)
+        src.ReadAsArray().astype(float)
+        ndv = src.GetRasterBand(1).GetNoDataValue()
+        #print("NoData Value: ", ndv)
+        #Close file
+        src = None
+        return ndv
+    
     def relief(self):
         '''
         Get the difference between the maximum and minimum elevations within the grid.
@@ -965,12 +975,14 @@ class baseGrid:
 
         if axs is None:
             f,axs = plt.subplots(1,1)
-
+           
         if logTransform:
             axs.imshow(np.log10(self.grid), extent=self.getGridExtent(), **kwargs)
         else:
             axs.imshow(self.grid, extent=self.getGridExtent(), **kwargs)
-
+        
+        
+        
         return axs
 
     def plotThisGridAgainstAnotherGrid(self, xAxisGrid, plotFractionOfObservations: float = 1, axs = None,
