@@ -2,7 +2,7 @@
 - request pointclouds from 3DEP to create grids
 - compute metrics on DEMs
 - Setup is tested for Windows running Docker & VSCode-Remote Containers
-- two possible containers: 1) Dev Container in VSCode; 2) Local Jupyter Notebook Server
+
 
 ## Required Software:
 - Docker Desktop installed
@@ -11,7 +11,6 @@
 
 ## File List:
 - Dockerfile -- builds a miniconda container for developing in VSCode
-- Dockerfile.mini.rgr -- (DOES NOT WORK, NEEDS UPDATE) builds miniconda container with local jupyter notebook server; notebook launches when container is built
 - devcontainer -- config files for VSCode Remote Container
 - src -- folder containing DEM creation & Analysis Modules, tutorial jupyter_notebooks, test scripts, and testData
 - .travis.yml, docker-compose.image.yml, docker-compose.yml -- configuration files for Docker.mini.rgr
