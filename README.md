@@ -9,7 +9,7 @@
 ## Required Software:
 - Docker Desktop installed
 - VScode
-- VSCode Extensions: Docker, Remote Containers, Python, Jupyter
+- VSCode Extensions: (Local) Docker, Dev Containers, WSL (DEV Container) Python, Pylance, isort, Docker, Jupyter
 
 ## File List:
 - Dockerfile -- builds a miniconda container for developing in VSCode
