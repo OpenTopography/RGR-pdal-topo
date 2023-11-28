@@ -11,7 +11,6 @@
 #       --Dockerfile
 
 FROM continuumio/miniconda3
-
 WORKDIR /rgr/src
 ENV PATH /opt/conda/envs/base/bin:$PATH
 
@@ -19,12 +18,17 @@ RUN conda update conda \
     && conda update --all \
     && conda config --add channels conda-forge \
     && conda config --add channels default
-RUN conda install jupyter matplotlib numpy ipympl numexpr scipy shapely pyproj
+
+RUN conda create --name rgr python=3.8
+
+RUN echo "source activate rgr" >> ~/.bashrc
+SHELL ["/bin/bash", "--login", "-c"]
+
+RUN conda install -n rgr jupyter matplotlib numpy ipympl numexpr scipy shapely pyproj
+RUN conda install -n rgr -c conda-forge gdal
+RUN conda install -n rgr -c conda-forge python-pdal
 RUN pip install geopandas 
-RUN conda install -c conda-forge gdal
-RUN conda install -c conda-forge python-pdal
 
 RUN conda clean --all
 
 CMD ["/bin/bash"]
-
