@@ -12,18 +12,19 @@
 
 FROM continuumio/miniconda3
 
-WORKDIR /rgr
+WORKDIR /rgr/src
+ENV PATH /opt/conda/envs/base/bin:$PATH
+
 RUN conda update conda \
-  && conda update --all \
-  && conda config --add channels conda-forge \
-  && conda config --add channels default \
-  #install base level packages:
-  && conda install jupyter matplotlib numpy numexpr gdal scipy shapely pyproj geopandas\
-  #pdal needs super special install, otherwise won't work
-  && conda install -c conda-forge python-pdal\
-  && conda clean --all
+    && conda update --all \
+    && conda config --add channels conda-forge \
+    && conda config --add channels default
+RUN conda install jupyter matplotlib numpy ipympl numexpr scipy shapely pyproj
+RUN pip install geopandas 
+RUN conda install -c conda-forge gdal
+RUN conda install -c conda-forge python-pdal
 
-VOLUME /data
+RUN conda clean --all
 
-EXPOSE 8888
-COPY . .
+CMD ["/bin/bash"]
+
