@@ -16,7 +16,6 @@
 - devcontainer -- config files for VSCode Remote Container
 - src -- folder containing DEM creation & Analysis Modules, tutorial jupyter_notebooks, test scripts, and testData
 - .travis.yml, docker-compose.image.yml, docker-compose.yml -- configuration files for Docker.mini.rgr
-- data -- folder destination for Dockerfile 'VOLUME'
 
 ## Getting started:
 - Clone this repo
