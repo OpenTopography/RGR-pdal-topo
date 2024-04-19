@@ -25,7 +25,7 @@
 - Navigate to repo folder
 - Select ><, in Remote options, select 'reopen folder in container'
 - Once container is launched, add installed VSCode extensions to the Dev container
-- Change Python Interpreter to 'Python 3.9 ('rgr':conda) /opt/conda/bin/python'
+- Change Python Interpreter to 'Python 3.8 ('rgr':conda) /opt/conda/bin/python'
 
 
 
