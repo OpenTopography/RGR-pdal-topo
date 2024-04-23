@@ -1,7 +1,8 @@
 ## Containerized Development Environment for the RGR NSF-INTERN Project
 - Use PDAL to request pointclouds from The National Map and 3DEP Entwine Server
 - Generate DEM grids using PDAL and GDAL
-- Compute metrics on DEMs 
+- Compute metrics on DEMs
+- Perform basic pixel classification using sci-kitlearn
 
 ** Setup is tested for Windows running Docker & VSCode-Remote Containers
 
