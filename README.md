@@ -3,7 +3,7 @@
 - Generate DEM grids using PDAL and GDAL-based python modules
 - Compute metrics on DEMs
 - Perform basic pixel classification using sci-kitlearn
-- Example scripts show analysis of Rio Grande rift normal faults and alluvial fan deposits
+- Example notebooks show analysis of Rio Grande rift normal faults and alluvial fan deposits
 
 ** Setup is tested for Windows running Docker & VSCode-Remote Containers
 
