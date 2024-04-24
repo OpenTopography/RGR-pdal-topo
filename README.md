@@ -1,8 +1,9 @@
-## Containerized Development Environment for the RGR NSF-INTERN Project
+## Containerized Development Environment for the Rio Grande Rift (RGR) NSF-INTERN Project
 - Use PDAL to request pointclouds from The National Map and 3DEP Entwine Server
-- Generate DEM grids using PDAL and GDAL
+- Generate DEM grids using PDAL and GDAL-based python modules
 - Compute metrics on DEMs
 - Perform basic pixel classification using sci-kitlearn
+- Example scripts show analysis of Rio Grande rift normal faults and alluvial fan deposits
 
 ** Setup is tested for Windows running Docker & VSCode-Remote Containers
 
