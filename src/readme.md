@@ -1,3 +1,5 @@
+## Table of Contents
+
 tutorial_notebooks -- notebooks for utilizing AWS point cloud and DEM creation/analysis modules
 
 testData -- datasets for the tutorial notebooks
