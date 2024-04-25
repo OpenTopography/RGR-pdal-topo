@@ -1,0 +1,11 @@
+Geo7x SHP names & assoc. field spots:
+
+Point_generic -- Graben SE of Dunes
+
+Point_generic1 -- NS Fault S of Dunes ("Pinon")
+
+Point_generic2 -- Tobin Fault
+
+Point_generic3 -- S Zapata Fault Single Strand
+
+Point_generic4 -- S Zapata Fault Multi Strand Section
