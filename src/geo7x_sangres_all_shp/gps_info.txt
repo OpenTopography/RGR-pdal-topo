@@ -1,0 +1,1 @@
+GPS point shapefiles collected across select normal fault scarps along the Sangre de Cristo zone.
