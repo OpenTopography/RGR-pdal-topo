@@ -1,12 +1,11 @@
 ## Containerized Development Environment for the Rio Grande Rift (RGR) NSF-INTERN Project
 - Use PDAL to request data from The National Map and the Entwine Amazon S3 bucket that hosts USGS 3DEP lidar point clouds
-- Generate DEM grids using PDAL and GDAL-based python modules
-- Compute metrics on DEMs
+- Generate DEM grids from point clouds using PDAL and GDAL-based python modules
+- Compute topographic metrics on DEMs (e.g. surface roughness, slope, curvature, shaded-relief)
 - Perform basic pixel classification using sci-kitlearn
 - Example notebooks show analysis of Rio Grande rift normal faults and alluvial fan deposits
 
 ** Setup is tested for Windows running Docker & VSCode-Remote Containers
-
 
 ## Required Software:
 - Docker Desktop installed
