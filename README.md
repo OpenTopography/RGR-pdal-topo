@@ -18,7 +18,6 @@ This repository contains Python modules, scripts, and notebooks that:
 - Dockerfile -- builds a miniconda container for developing in VSCode
 - devcontainer -- config files for VSCode Remote Container
 - src -- folder containing DEM creation & Analysis Modules, tutorial jupyter_notebooks, test scripts, and testData
-- .travis.yml, docker-compose.image.yml, docker-compose.yml -- configuration files for Docker.mini.rgr
 
 ## Getting started:
 - Clone this repo
