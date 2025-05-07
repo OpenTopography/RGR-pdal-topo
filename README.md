@@ -1,5 +1,5 @@
 # RGR-pdal-topo
-## Containerized Development Environment for the Rio Grande Rift (RGR) NSF-INTERN Project
+RGR-pdal-topo is a containerized development environment for processing point cloud data into raster grids, computing topographic metrics, and performing basic classiciation for geological mapping.
 This repository contains Python modules, scripts, and notebooks that: 
 - Use PDAL to request data from The National Map and the Entwine Amazon S3 bucket that hosts USGS 3DEP lidar point clouds
 - Generate DEM grids from point clouds using PDAL and GDAL-based python modules
