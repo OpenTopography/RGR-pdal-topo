@@ -86,8 +86,6 @@ class baseGrid:
         Loads in a raster and populates class variables with georeferencing, grid size information)
         :param filePath:  The path to the raster data that is to be loaded
         :return:
-
-         TODO: reset pixel size if this is a geographic grid - think about other ways to handle that...
          '''
 
         # Read the grid in using GDAL
@@ -103,10 +101,9 @@ class baseGrid:
         self._projection = src.GetProjection()  # Steal the projection from the old dataset
 
         self._dx = self._geotransform[1]
-        self._dy = np.abs(self._geotransform[-1]) #TODO: Hmmm... can grids be flipped in different orientations? This value of _geotransform is not always negative...
+        self._dy = np.abs(self._geotransform[-1]) 
         self._xllcenter = self._geotransform[0] + self._dx / 2.0
 
-        #TODO: I've encountered a raster that isn't oriented normally.... geotransform[-1] is positive and the raster appears flipped
         self._yllcenter = self._geotransform[3] - (self._dy * (self._nrows - 0.5))
 
         # Get the information from the existing file needed to resave as the same type
@@ -132,8 +129,6 @@ class baseGrid:
     def _copyAttributesFromGrid(self,gridToCopy):
         '''
         Copy the attributes (those that aren't the actual data grid itself) from another grid.
-
-        TODO: Is there an alternative way to implement this, so that I do not have to list individual assignment operations?
         :param gridToCopy: A baseGrid or derived class that has the spatial referencing attributes we want to assign
         to this grid
         :return:
@@ -270,7 +265,6 @@ class baseGrid:
 
     def __ior__(self,other):
         '''
-        TODO: Is this and __and__ overwriting the operators I think they are?
         Overwrites '|' operator. (ThisGrid | other.grid)
         :param other:
         :return:
@@ -298,7 +292,6 @@ class baseGrid:
 
     def __or__(self,other):
         '''
-        TODO: Is this and __and__ overwriting the operators I think they are?
         Overwrites '|' operator. (ThisGrid | other.grid)
         :param other:
         :return:
@@ -533,8 +526,6 @@ class baseGrid:
         left (i.e., column index 1). If false, an index 1 column to the right hand side would be column index 0.
         :return:
         '''
-
-        # Hmm... to do another minus 1 (as if edges are equivalent)? Maybe make an option
         if equivalentEdges:
             incrementor = 1
         else:
@@ -599,7 +590,7 @@ class baseGrid:
 
         return np.nanmax(self.grid)
     
-    def ndv(self, filepath:str): # added by MS 12/7/22
+    def ndv(self, filepath:str):
         src = gdal.Open(filepath)
         src.ReadAsArray().astype(float)
         ndv = src.GetRasterBand(1).GetNoDataValue()
@@ -664,7 +655,6 @@ class baseGrid:
 
     def getRowColFromXY(self, xy):
         '''
-        TODO: Update this for iterables
 
         Get the nearest row,column index to the specified xy point.
 
@@ -679,8 +669,6 @@ class baseGrid:
 
     def getXYFromRowCol(self,rowCol):
         '''
-        TODO: Update this for iterables
-
         :param rowCol:
         :return:
         '''
@@ -691,8 +679,6 @@ class baseGrid:
 
     def getGridValueAtPoint(self,xy):
         '''
-        TODO: Update this for iterables
-
         Get the value of the grid at the nearest row,column index to the specified xy point.
         :param xy:
         :return: value, grid(x,y). The value at the nearest row,column index to this point.
@@ -736,9 +722,6 @@ class baseGrid:
         :param name: optional name to add to the filepath of the mask
         :return: maskedGrid: an instance of demGrid with just this value masked
         '''
-
-
-        #TODO: Check for whether this is a polygon, could alternative not use geodataframes but just the list of polygon
         g = [geo for geo in gdf.geometry]
 
         #Preallocate space for if this is a masked grid
@@ -923,16 +906,15 @@ class baseGrid:
                 negVals = grid < 0
                 posVals = grid > 0
 
-                # TODO: Test all this - yikes! Could probably make a simpler suite of cases...
-                # How do we split up the bins between positive and negative values? Perhaps in a way that tries to
-                # Divide thins up evenly?
-                if len(grid[negVals])>0: #Can't use np.any, because I don't know if this grid is a numpy array or a baseGrid
+    
+
+                if len(grid[negVals])>0:
                     # Determine how many negative bins we should have
-                    negOOM = np.log10(-np.min(grid[negVals]))  # How many o.o.m. below zero do negatives extend?
+                    negOOM = np.log10(-np.min(grid[negVals]))  
 
                     # If there are any positive values
                     if np.any(posVals):
-                        posOOM = np.log10(np.max(grid[posVals]))  # How many o.o.m. above zero do positives extend?
+                        posOOM = np.log10(np.max(grid[posVals])) 
                     # If not, there are 0 positive value bins
                     else:
                         posOOM = 0
@@ -1215,8 +1197,6 @@ class baseGrid:
 
     def _findMaskBoundaries(self, goodDataMask):
         '''
-
-        TODO: Do I really want this to be a function of this class? Perhaps just a general function...
 
         This function seeks to find the cells at the edge of a mask. This could be the boundaries of a non-rectangular
         DEM stored within a rectangular grid (e.g., there being a lot of no-data values around the boundary of the grid)
