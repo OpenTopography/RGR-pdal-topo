@@ -1,13 +1,3 @@
-'''
-
-Options for structuring this:
-
-1) Everything is a method on the class
-
-2) There is a class for DEMs and a series of methods for performing on grids
-
-'''
-
 import os
 from time import sleep
 
@@ -29,8 +19,6 @@ except:
     from FileSuffixDictionary import FILESUFFIXDICT
 
 class demGrid(baseGrid):
-
-    #TODO: Do I really need demGrid and baseGrid?
 
     def calcPlaneCoefficientsToGrid(self, X : np.ndarray = None, Y : np.ndarray = None):
         '''
@@ -254,7 +242,7 @@ class demGrid(baseGrid):
         fxx = (self.grid[1:-1, 2:] - 2 * self.grid[1:-1, 1:-1] + self.grid[1:-1, :-2]) / (self._dx ** 2)
         fyy = (self.grid[2:, 1:-1] - 2 * self.grid[1:-1, 1:-1] + self.grid[:-2, 1:-1]) / (self._dy ** 2);
 
-        # Partial derivative TODO: Double check the sign of this finite difference is correct, recognizing gdal ordering.
+        # Partial derivative
         fxy = (self.grid[2:, 2:] - self.grid[2:, 1:-1] - self.grid[1:-1, 2:] + 2 * self.grid[1:-1, 1:-1] -
                self.grid[:-2,1:-1] - self.grid[1:-1,:-2] + self.grid[:-2,:-2])
         fxy = fxy / (4 * self._dx * self._dy)
@@ -315,8 +303,6 @@ class demGrid(baseGrid):
             Sx, Sy = self.calcFiniteSlopesOverWindow(N = N, returnAsArray=True)
         else:
             raise Exception('Whoops, N must be either None or an integer.')
-
-        #TODO: In old DEM tools I had all these weird conditions to convert this from atan2 output to geo azimuth... is this right? as easy as it is?
 
         #Calculate theta
         theta = np.arctan2(-Sy,-Sx) #Get the downhill direction
@@ -486,7 +472,6 @@ class demGrid(baseGrid):
         of the original grid within the specified window
         '''
 
-        #TODO: Update for variable x and y resolutions?
         if doUseCircularWindow:
             halfWidth = pixel_width/2.0
             coords = np.arange(pixel_width)-halfWidth
@@ -496,7 +481,6 @@ class demGrid(baseGrid):
         else:
             footprint = np.ones((pixel_width,pixel_width))
 
-        #TODO: implement alternative algorithm from work on roughness and rock exposure
         gridOut = ndi.generic_filter(self.grid,np.std,footprint = footprint,mode = 'constant',cval = np.nan)
 
         if not returnAsArray:
@@ -518,7 +502,6 @@ class demGrid(baseGrid):
         of the original grid within the specified window
         '''
 
-        #TODO: Update for variable x and y resolutions?
         if doUseCircularWindow:
             halfWidth = pixel_width/2.0
             coords = np.arange(pixel_width)-halfWidth
@@ -528,7 +511,6 @@ class demGrid(baseGrid):
         else:
             footprint = np.ones((pixel_width,pixel_width))
 
-        #TODO: implement alternative algorithm from work on roughness and rock exposure
         gridOut = ndi.generic_filter(self.grid,np.median,footprint = footprint,mode = 'constant',cval = np.nan)
 
         if not returnAsArray:
@@ -667,9 +649,6 @@ class demGrid(baseGrid):
 
     def duplicateGridWithNewArray(self, newGrid : np.ndarray, newSuffix: str = None):
         '''
-
-        TODO: is there a way to generalize this to the base grid, while returning an instance of the same type?
-
         Creates a copy of the specified 2d numpy array grid using the spatial data from the specified grid
         :param newGrid: a 2d numpy array.
         :param newSuffix: a string to append to the existing file name (if present)
@@ -694,8 +673,6 @@ class demGrid(baseGrid):
 
     def loadDerivedGrid(self, derivativeSuffix: str):
         '''
-        TODO: is there a way to generalize this to the base grid, while returning an instance of the same type?
-
         For a grid derived from this one, that has a suffix to the file name that is known, we can load it based on
         this grids file name.
         :param derivativeSuffix:
@@ -722,7 +699,6 @@ class demGrid(baseGrid):
     def movingWindowOperation(self, nrows:int, ncols:int, function:callable,
                               winWidth:float = None, winHeight:float = None,**extraArgs):
         '''
-        TODO: implement this... what to return? A list of dictionaries?
         :return:
         '''
 
@@ -731,19 +707,6 @@ class demGrid(baseGrid):
 
         if not(winHeight) is None:
             nrows = np.round(self._dy*self._nrows/winHeight).astype(np.int)
-
-
-        # #Create search window coords width
-        # if winWidth is None:
-        #     winWidth = self._dx*(self._ncols/ncols)
-        # else:
-        #     #If a window size is specified - make sure it rounds evenly into the size of the grid
-        #     winHeight = self._dy * np.round((self._dy * self._nrow) / winHeight)
-        #
-        # if winHeight is None:
-        #     winHeight = self._dy*(self._nrows/nrows)
-        # else:
-        #     winWidth = self._dx*np.round((self._dx*self._ncols)/winWidth)
 
 
         xWinBounds = np.linspace(self._xllcenter, (self._dx*(self._ncols-1) + self._xllcenter), ncols+1)
