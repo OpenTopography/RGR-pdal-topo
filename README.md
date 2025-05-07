@@ -5,7 +5,7 @@ This repository contains Python modules, scripts, and notebooks that:
 - Generate DEM grids from point clouds using PDAL and GDAL-based python modules
 - Compute topographic metrics on DEMs (e.g. surface roughness, slope, curvature, shaded-relief)
 - Perform basic pixel classification using sci-kitlearn
-The provided example notebooks show analysis of Rio Grande rift normal faults and alluvial fan deposits.
+- The provided example notebooks show analysis of Rio Grande rift normal faults and alluvial fan deposits.
 
 ** Setup is tested for Windows running Docker & VSCode-Remote Containers
 
