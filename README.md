@@ -1,3 +1,5 @@
+[![NSF-1948857](https://img.shields.io/badge/NSF-1948857-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1948857)
+
 # RGR-pdal-topo
 RGR-pdal-topo is a containerized development environment for processing point cloud data into raster grids, computing topographic metrics from DEMs, and performing basic DEM classiciation for geological mapping.
 This repository contains Python modules, scripts, and notebooks that: 
