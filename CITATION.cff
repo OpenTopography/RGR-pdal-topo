@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Madeline"
+  given-names: "Schwarz"
+- family-names: "Arrowsmith"
+  given-names: "Ramon"
+title: "Notebooks for analysis of Rio Grande Rift fault scarps and alluvial fans"
+version: 1.0.0
+date-released: 2025-05-09
+repository-code: "https://github.com/OpenTopography/RGR-pdal-topo"
